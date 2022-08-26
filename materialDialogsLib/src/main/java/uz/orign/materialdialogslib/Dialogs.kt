@@ -2,12 +2,12 @@ package uz.orign.materialdialogslib
 
 import android.app.DatePickerDialog
 import android.content.Context
-import android.view.LayoutInflater
+import android.content.DialogInterface
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import java.util.*
-import javax.xml.datatype.DatatypeConstants.MONTHS
+
 
 object Dialogs {
 
@@ -43,4 +43,20 @@ object Dialogs {
         dpd.show()
     }
 
+    fun listAlertDialog(context: Context){
+        var selectedFruitsIndex: Int = 0
+        var selectedFruits: String? = null
+        val fruits = arrayOf("Twitter", "Google+", "Telegram", "Instagram")
+
+        MaterialAlertDialogBuilder(context)
+            .setTitle("Social networks")
+            .setSingleChoiceItems(fruits, selectedFruitsIndex) { dialog_, which ->
+                selectedFruitsIndex = which
+                selectedFruits = fruits[which]
+                Toast.makeText(context, "${selectedFruits.toString()} Selected", Toast.LENGTH_SHORT).show()
+            }
+            .setPositiveButton("Choose") { dialog, which ->
+            }
+            .show()
+    }
 }
